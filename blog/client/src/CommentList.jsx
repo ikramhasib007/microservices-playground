@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function CommentList({ postId }) {
-  console.log('postId: ', postId);
   const [comments, setComments] = useState({})
   console.log('comments: ', comments);
 
@@ -10,7 +9,6 @@ export default function CommentList({ postId }) {
     async () => {
       try {
         const res = await axios.get(`http://localhost:4001/posts/${postId}/comments`)
-        console.log('res: ', res);
         setComments(res.data)
       } catch (error) {
         console.log('error: ', error);
@@ -29,7 +27,7 @@ export default function CommentList({ postId }) {
         <span className='bold'>{Object.values(comments).length}</span> comments
       </p>
       <ul className=''>
-        {Object.values(comments).map((comment) => <li>{comment.content}</li>)}
+        {Object.values(comments).map((comment, i) => <li key={`${i}`}>{comment.content}</li>)}
       </ul>
     </div>
   )
