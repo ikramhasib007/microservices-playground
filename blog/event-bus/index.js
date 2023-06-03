@@ -11,8 +11,11 @@ app.use(bodyParser.json())
 app.post("/events", (req, res) => {
   const event = req.body
 
+  // post service
   axios.post("http://localhost:4000/events", event).catch(err => console.log(err.message))
+  // comment service
   axios.post("http://localhost:4001/events", event).catch(err => console.log(err.message))
+  // query service
   axios.post("http://localhost:4002/events", event).catch(err => console.log(err.message))
 
   res.send("ok").status(202) // ACCEPTED

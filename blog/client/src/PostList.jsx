@@ -5,11 +5,11 @@ import CommentList from './CommentList';
 
 export default function PostList() {
   const [posts, setPosts] = useState({})
-  console.log('posts: ', posts);
-
+  
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/posts")
+      const res = await axios.get("http://localhost:4002/posts")
+      console.log('posts: ', res.data);
       setPosts(res.data)
     } catch (error) {
       console.log('error: ', error);
@@ -48,7 +48,7 @@ export default function PostList() {
                           </div>
                         </div>
                         <div>
-                          <CommentList postId={postId} />
+                          <CommentList comments={posts[postId].comments} />
                           <div className="-mt-px flex divide-x divide-gray-200">
                               <CommentCreate postId={postId} />
                           </div>

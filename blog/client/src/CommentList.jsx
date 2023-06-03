@@ -1,25 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 
-export default function CommentList({ postId }) {
-  const [comments, setComments] = useState({})
-  console.log('comments: ', comments);
-
-  const fetchCommentsByPostId = useCallback(
-    async () => {
-      try {
-        const res = await axios.get(`http://localhost:4001/posts/${postId}/comments`)
-        setComments(res.data)
-      } catch (error) {
-        console.log('error: ', error);
-      }
-    },
-    [postId]
-  )
-
-  useEffect(() => {
-    fetchCommentsByPostId()
-  }, [fetchCommentsByPostId])
+export default function CommentList({ comments }) {
 
   return (
     <div className='px-6'>
