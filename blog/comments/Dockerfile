@@ -1,10 +1,15 @@
-FROM node:18-alpine
+# syntax=docker/dockerfile:1
 
-WORKDIR /usr/app
+FROM node:18-alpine
+# ENV NODE_ENV=production
+
+WORKDIR /app
 
 RUN npm install -g pnpm
 RUN pnpm config set store-dir ~/.pnpm-store
-COPY ./package.json ./
+
+COPY ["package.json", "pnpm-lock.yaml*", "./"]
+
 RUN pnpm install
 COPY ./ ./
 
