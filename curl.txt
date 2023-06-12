@@ -1,0 +1,6 @@
+curl --request POST \
+  --url http://10.152.183.157:4000/posts \
+  --header 'content-type: application/json' \
+  --data '{"title": "fist blog post" }'
+
+curl http://10.152.183.157:4000/posts
