@@ -1,6 +1,17 @@
+# Create a post...
 curl --request POST \
-  --url http://10.152.183.157:4000/posts \
+  --url http://10.152.183.57:4000/posts \
   --header 'content-type: application/json' \
   --data '{"title": "fist blog post" }'
 
-curl http://10.152.183.157:4000/posts
+# GET all posts
+curl http://10.152.183.57:4000/posts
+
+# Create a comment...
+curl --request POST \
+  --url http://10.152.183.146:4001/posts/e635dbb4/comments \
+  --header 'content-type: application/json' \
+  --data '{"content": "This is a comment..." }'
+
+# GET all posts from query service with all comments
+curl http://10.152.183.144:4002/posts
