@@ -22,7 +22,7 @@ app.post("/posts", async (req, res) => {
   }
 
   // event fires
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://event-bus-srv:4005/events", {
     type: "PostCreated",
     data: { id, title }
   }).catch(err => console.log(err.message))
