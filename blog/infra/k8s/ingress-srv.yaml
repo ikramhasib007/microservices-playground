@@ -11,8 +11,8 @@ spec:
   - host: posts.com
     http:
       paths:
-      - pathType: "/posts"
-        path: "/"
+      - pathType: Prefix
+        path: "/posts"
         backend:
           service:
             name: posts-srv
