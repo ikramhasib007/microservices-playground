@@ -6,7 +6,7 @@ metadata:
     name: ingress-srv
   annotations:
     spec.ingressClassName: nginx
-    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
   - host: posts.com
