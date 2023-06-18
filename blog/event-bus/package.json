@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,6 @@
   },
   "volta": {
     "node": "18.16.0",
-    "pnpm": "8.6.0"
+    "pnpm": "8.6.2"
   }
 }

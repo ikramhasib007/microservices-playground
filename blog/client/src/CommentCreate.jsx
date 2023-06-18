@@ -12,7 +12,7 @@ export default function CommentCreate({ postId }) {
   async function onSubmit(data) {
     console.log('data: ', data);
     try {
-      await axios.post(`http://localhost:4001/posts/${postId}/comments`, data)
+      await axios.post(`http://posts.com/posts/${postId}/comments`, data)
       reset()
     } catch (error) {
       console.log('error: ', error);
