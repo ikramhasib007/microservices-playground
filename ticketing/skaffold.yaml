@@ -2,11 +2,13 @@ apiVersion: skaffold/v4beta5
 kind: Config
 metadata:
   name: ticketing
+deploy:
+  kubectl:
+    remoteManifests:
+      - "infra/k8s/auth-depl.yaml"
 build:
   local:
-    concurrency: 1
-    tryImportMissing: false
-    useDockerCLI: false
+    push: false
   artifacts:
     - image: ikramhasib007/auth
       context: auth
