@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: ikramhasib007/auth
+        image: gcr.io/ticketing-dev-390618/auth
         resources:
           limits:
             memory: "128Mi"

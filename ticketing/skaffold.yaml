@@ -2,15 +2,17 @@ apiVersion: skaffold/v4beta5
 kind: Config
 metadata:
   name: ticketing
-deploy:
-  kubectl:
-    remoteManifests:
-      - "infra/k8s/auth-depl.yaml"
+# deploy:
+#   kubectl:
+#     remoteManifests:
+#       - ./infra/k8s/*.yaml
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: ticketing-dev-390618
   artifacts:
-    - image: ikramhasib007/auth
+    - image: gcr.io/ticketing-dev-390618/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -20,4 +22,4 @@ build:
             src: "src/**/*.ts|js"
 manifests:
   rawYaml:
-    - infra/k8s/auth-depl.yaml
+    - ./infra/k8s/*.yaml
