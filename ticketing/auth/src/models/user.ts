@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import { Password } from "../services/password";
+import { BadReqeustError } from "../errors/bad-request-error";
+import { UnprocessableEntityError } from "../errors/unprocessable-entity-error";
 
 interface UserAttrs {
   email: string;
@@ -28,6 +31,18 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
+
+userSchema.pre("save", async function (next) {
+  try {
+    if (this.isModified("password")) {
+      const hashed = await Password.toHash(this.get("password"));
+      this.set("password", hashed);
+    }
+  } catch (error) {
+    next(new UnprocessableEntityError());
+  }
+  next();
+});
 
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
 
