@@ -11,7 +11,7 @@ RUN pnpm config set store-dir ~/.pnpm-store
 
 COPY ["package.json", "pnpm-lock.yaml*", "./"]
 
-RUN pnpm install
+RUN pnpm install --omit=dev
 
 COPY . .
 
