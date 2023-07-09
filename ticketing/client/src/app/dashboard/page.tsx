@@ -14,7 +14,10 @@ export default function DashboardPage() {
                   Section title
                 </h2>
                 <div className="overflow-hidden rounded-lg bg-white shadow">
-                  <div className="p-6">{/* Your content */}</div>
+                  <div className="p-6">
+                    <p className="text-green-700 font-bold py-1">Login successful!</p>
+                    <p className="py-1">Welcome to the DashboardPage</p>
+                  </div>
                 </div>
               </section>
             </div>

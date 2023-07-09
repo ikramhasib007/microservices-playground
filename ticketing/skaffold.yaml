@@ -7,13 +7,21 @@ metadata:
 #     remoteManifests:
 #       - ./infra/k8s/*.yaml
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticketing-dev-390618
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: ticketing-dev-390618
   artifacts:
-    - image: gcr.io/ticketing-dev-390618/auth
+    - image: ikramhasib007/auth
       context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.ts|js"
+    - image: ikramhasib007/client
+      context: client
       docker:
         dockerfile: Dockerfile
       sync:

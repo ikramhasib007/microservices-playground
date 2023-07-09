@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full bg-gray-100">
-      <body className={classNames("h-full", inter.className)}>{children}</body>
+      <body suppressHydrationWarning={true} className={classNames("h-full", inter.className)}>{children}</body>
     </html>
   )
 }
