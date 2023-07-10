@@ -15,4 +15,4 @@ RUN pnpm install
 
 COPY . .
 
-CMD ["pnpm", "start"]
+CMD ["pnpm", "dev"]

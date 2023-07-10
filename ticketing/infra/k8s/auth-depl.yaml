@@ -15,12 +15,12 @@ spec:
       containers:
       - name: auth
         image: ikramhasib007/auth
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3000
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
+        # ports:
+        # - containerPort: 3000
         env:
           - name: JWT_KEY
             valueFrom:
