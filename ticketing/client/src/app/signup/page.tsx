@@ -1,5 +1,19 @@
+import { FormEvent, useState } from "react"
+import useRequest from "@/hooks/use-request"
 
 export default function SignupPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { doRequest, errors } = useRequest()
+
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    const data = doRequest({ url: "/api/users/signup", method: "post", body: { email, password } })
+    console.log('response: ', data);
+  }
+
   return (
     <main className="-mt-24 pb-8">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -16,7 +30,7 @@ export default function SignupPage() {
                 <div className="p-6">
                   {/* Content here */}
 
-                  <form className="px-6 sm:px-12">
+                  <form onSubmit={onSubmit} className="px-6 sm:px-12">
                     <div className="space-y-12">
 
                       <div className="border-b border-gray-900/10 pb-12">
@@ -34,6 +48,8 @@ export default function SignupPage() {
                                 id="email"
                                 name="email"
                                 type="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
                                 autoComplete="email"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               />
@@ -49,6 +65,8 @@ export default function SignupPage() {
                                 type="text"
                                 name="password"
                                 id="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                                 autoComplete="current-password"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               />
@@ -70,6 +88,8 @@ export default function SignupPage() {
                       </button>
                     </div>
                   </form>
+
+                  {errors}
 
                 </div>
               </div>

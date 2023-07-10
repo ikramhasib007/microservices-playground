@@ -27,7 +27,7 @@ build:
       sync:
         manual:
           - dest: .
-            src: "src/**/*.ts|js"
+            src: "**/*.ts|js"
 manifests:
   rawYaml:
     - ./infra/k8s/*.yaml

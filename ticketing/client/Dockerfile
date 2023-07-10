@@ -3,6 +3,10 @@
 FROM node:18-alpine
 # ENV NODE_ENV=production
 
+# Add the following lines
+ENV CI=true
+ENV WDS_SOCKET_PORT=0
+
 WORKDIR /app
 
 RUN npm install -g npm@latest
