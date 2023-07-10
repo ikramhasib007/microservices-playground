@@ -21,3 +21,10 @@ const start = async () => {
 };
 
 start();
+
+/**
+ * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_USERNAME=admin
+ * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_PASSWORD=1234
+ *
+ * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_USERNAME=admin --from-literal=MONGO_INITDB_ROOT_PASSWORD=1234
+ */
