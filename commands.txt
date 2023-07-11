@@ -1,0 +1,9 @@
+docker context ls
+docker context use default
+
+DOCKER_HOST="unix:///Users/rootnext8/.docker/run/docker.sock" skaffold dev
+
+kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+
+kubectl proxy
+kubectl get svc -A # (ingress line only)

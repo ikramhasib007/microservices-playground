@@ -5,22 +5,23 @@ metadata:
   labels:
     name: ingress-srv
   annotations:
-    spec.ingressClassName: nginx
+    # nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
+  ingressClassName: nginx
   rules:
   - host: ticketing.dev
     http:
       paths:
-      - pathType: Prefix
-        path: "/api/users/?(.*)"
+      - path: "/api/users/?(.*)"
+        pathType: Prefix
         backend:
           service:
             name: auth-srv
             port: 
               number: 3000
-      - pathType: Prefix
-        path: "/?(.*)"
+      - path: "/?(.*)"
+        pathType: Prefix
         backend:
           service:
             name: client-srv
