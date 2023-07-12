@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
+  reactStrictMode: true,
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
@@ -13,7 +13,7 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
-  },
+  }
 }
 
 module.exports = nextConfig

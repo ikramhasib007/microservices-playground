@@ -1,7 +1,15 @@
+import RootLayout from "@/Layouts/layout";
+import Navigation from "@/components/Navigation";
 
 export default function DashboardPage() {
   return (
-    <>
+    <RootLayout>
+      <Navigation
+        items={[
+          { name: 'Home', href: '/', current: true },
+          { name: 'Sign Out', href: '/signup', current: false },
+        ]}
+      />
       <main className="-mt-24 pb-8">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h1 className="sr-only">Page title</h1>
@@ -36,6 +44,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
-    </>
+    </RootLayout>
   )
 }
