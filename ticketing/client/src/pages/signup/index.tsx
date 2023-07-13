@@ -14,13 +14,13 @@ export default function SignupPage() {
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    const data = doRequest({
+    const data = await doRequest({
       url: "/api/users/signup",
       method: "post",
       body: { email, password },
       onSuccess: () => router.push("/")
     })
-    console.log('response: ', data);
+    console.log('[SignUP] response: ', data);
   }
 
   return (
@@ -80,7 +80,7 @@ export default function SignupPage() {
                               </label>
                               <div className="mt-2">
                                 <input
-                                  type="text"
+                                  type="password"
                                   name="password"
                                   id="password"
                                   value={password}
@@ -102,7 +102,7 @@ export default function SignupPage() {
                           type="submit"
                           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                          Save
+                          Sign Up
                         </button>
                       </div>
                     </form>

@@ -45,7 +45,11 @@ export default function Home({
                 <div className="overflow-hidden rounded-lg bg-white shadow">
                   <div className="p-6">
                     {/* Your content */}
-                    <span>Wellcome! Please login first...!</span>
+                    {currentUser ?
+                      <span>Wellcome! You are signin...!</span>
+                      :
+                      <span>Wellcome! Please login first...!</span>
+                    }
                   </div>
                 </div>
               </section>
