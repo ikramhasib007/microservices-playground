@@ -12,7 +12,7 @@ import buildClient from '@/libs/build-client';
  */
 
 type HomePageProps = {
-  currentUser: object|null;
+  currentUser: UserSession|null;
 }
  
 export default function Home({
@@ -45,7 +45,7 @@ export default function Home({
                 <div className="overflow-hidden rounded-lg bg-white shadow">
                   <div className="p-6">
                     {/* Your content */}
-                    {!currentUser ?
+                    {currentUser ?
                       <span>Wellcome! You are signin...!</span>
                       :
                       <span>Wellcome! Please login first...!</span>
@@ -68,7 +68,8 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
   try {
     // kubectl get svc -A
     const { data } = await client.get("/api/users/current-user")
-    currentUser = data
+    console.log('data: ', data);
+    currentUser = data.currentUser
   } catch (error) {
     console.log('[ServerSide] error: ', error);
   }
