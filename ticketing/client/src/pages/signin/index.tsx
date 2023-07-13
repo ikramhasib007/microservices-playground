@@ -47,7 +47,7 @@ export default function SigninPage() {
                   <div className="p-6">
                     
                     <div className="my-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                      <form className="space-y-6" onSubmit={onSubmit}>
+                      <form className="space-y-6" onSubmit={onSubmit} noValidate>
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                             Email address
@@ -58,7 +58,6 @@ export default function SigninPage() {
                               name="email"
                               type="email"
                               autoComplete="email"
-                              required
                               value={email}
                               onChange={e => setEmail(e.target.value)}
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -83,7 +82,6 @@ export default function SigninPage() {
                               name="password"
                               type="password"
                               autoComplete="current-password"
-                              required
                               value={password}
                               onChange={e => setPassword(e.target.value)}
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

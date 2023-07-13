@@ -48,7 +48,7 @@ export default function SignupPage() {
                   <div className="p-6">
                     {/* Content here */}
 
-                    <form onSubmit={onSubmit} className="px-6 sm:px-12">
+                    <form onSubmit={onSubmit} className="px-6 sm:px-12" noValidate>
                       <div className="space-y-12">
 
                         <div className="border-b border-gray-900/10 pb-12">
