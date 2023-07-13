@@ -20,7 +20,7 @@ export default function SignupPage() {
       body: { email, password },
       onSuccess: () => router.push("/")
     })
-    console.log('[SignUP] response: ', data);
+    console.log('[SignUP] data: ', data);
   }
 
   return (

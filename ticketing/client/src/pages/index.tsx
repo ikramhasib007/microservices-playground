@@ -19,7 +19,7 @@ export default function Home({
   currentUser,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   
-  console.log('[Client] currentUser: ', currentUser);
+  console.log('[Home] currentUser: ', currentUser);
 
   return (
     <RootLayout>
@@ -68,10 +68,9 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
   try {
     // kubectl get svc -A
     const { data } = await client.get("/api/users/current-user")
-    console.log('[getServerSideProps] currentUser: ', data);
     currentUser = data
-  } catch (error: any) {
-    console.log('[getServerSideProps] error: ', error.message);
+  } catch (error) {
+    console.log('[ServerSide] error: ', error);
   }
   return { props: { currentUser } }
 }

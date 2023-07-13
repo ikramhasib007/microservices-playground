@@ -20,7 +20,7 @@ export default function SigninPage() {
       body: { email, password },
       onSuccess: () => router.push("/")
     })
-    console.log('[SignIN] response: ', data);
+    console.log('[SignIN] data: ', data);
   }
 
   return (
