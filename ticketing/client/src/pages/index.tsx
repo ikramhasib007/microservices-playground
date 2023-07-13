@@ -1,6 +1,7 @@
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import RootLayout from '@/Layouts/layout';
 import Navigation from '@/components/Navigation';
+import buildClient from '@/libs/build-client';
 
 /**
  * Service endpoints naming convention
@@ -56,9 +57,17 @@ export default function Home({
   )
 }
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const res = await fetch('https://api.github.com/repos/vercel/next.js')
-  const currentUser = await res.json()
-  console.log('[getServerSideProps] currentUser: ', currentUser);
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx) => {
+  const client = buildClient(ctx);
+  
+  let currentUser = null;
+  try {
+    // kubectl get svc -A
+    const { data } = await client.get("/api/users/current-user")
+    console.log('[getServerSideProps] currentUser: ', data);
+    currentUser = data
+  } catch (error: any) {
+    console.log('[getServerSideProps] error: ', error.message);
+  }
   return { props: { currentUser } }
 }
