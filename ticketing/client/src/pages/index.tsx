@@ -68,7 +68,6 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
   try {
     // kubectl get svc -A
     const { data } = await client.get("/api/users/current-user")
-    console.log('data: ', data);
     currentUser = data.currentUser
   } catch (error) {
     console.log('[ServerSide] error: ', error);
