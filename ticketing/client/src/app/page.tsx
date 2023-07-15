@@ -1,15 +1,19 @@
-import RootLayout from "@/Layouts/layout";
-import Navigation from "@/components/Navigation";
+import { getCurrentUser } from "@/lib/auth/current-user";
+import Navigation from "./ui/Navigation";
 
-export default function DashboardPage() {
+export default async function Home() {
+  const currentUser = await getCurrentUser()
+
   return (
-    <RootLayout>
+    <>
       <Navigation
         items={[
           { name: 'Home', href: '/', current: true },
-          { name: 'Sign Out', href: '/signup', current: false },
+          { name: 'Sign In', href: '/signin', current: false },
+          { name: 'Sign Up', href: '/signup', current: false },
         ]}
       />
+
       <main className="-mt-24 pb-8">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h1 className="sr-only">Page title</h1>
@@ -23,8 +27,17 @@ export default function DashboardPage() {
                 </h2>
                 <div className="overflow-hidden rounded-lg bg-white shadow">
                   <div className="p-6">
-                    <p className="text-green-700 font-bold py-1">Login successful!</p>
-                    <p className="py-1">Welcome to the DashboardPage</p>
+                    {/* Your content */}
+                    {currentUser ?
+                      <>
+                        <span>Welcome! You are signed in...!</span>
+                        <code className="text-sm">
+                          {JSON.stringify(currentUser)}
+                        </code>
+                      </>
+                      :
+                      <span>Please login first...!</span>
+                    }
                   </div>
                 </div>
               </section>
@@ -44,6 +57,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
-    </RootLayout>
+    </>
   )
 }
