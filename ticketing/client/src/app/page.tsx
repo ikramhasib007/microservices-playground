@@ -6,13 +6,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navigation
-        items={[
-          { name: 'Home', href: '/', current: true },
-          { name: 'Sign In', href: '/signin', current: false },
-          { name: 'Sign Up', href: '/signup', current: false },
-        ]}
-      />
+      <Navigation currentUser={currentUser} />
 
       <main className="-mt-24 pb-8">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">

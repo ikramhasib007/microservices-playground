@@ -1,19 +1,16 @@
+import { getCurrentUser } from "@/lib/auth/current-user"
 import Navigation from "../ui/Navigation"
 
-export default function SigninLayout({
+export default async function SigninLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser()
+  
   return (
     <section>
-      <Navigation
-        items={[
-          { name: 'Home', href: '/', current: true },
-          { name: 'Sign In', href: '/signin', current: false },
-          { name: 'Sign Up', href: '/signup', current: false },
-        ]}
-      />
+      <Navigation currentUser={currentUser} />
       {children}
     </section>
   )

@@ -1,18 +1,16 @@
+import { getCurrentUser } from "@/lib/auth/current-user"
 import Navigation from "../ui/Navigation"
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser()
+
   return (
     <section>
-      <Navigation
-        items={[
-          { name: 'Home', href: '/', current: true },
-          { name: 'Sign Out', href: '/signout', current: false },
-        ]}
-      />
+      <Navigation currentUser={currentUser} />
       {children}
     </section>
   )

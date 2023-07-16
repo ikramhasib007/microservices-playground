@@ -1,6 +1,7 @@
 "use client"
 
 import React, { Fragment } from 'react'
+import Link from 'next/link'
 import { Menu, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
@@ -25,7 +26,33 @@ const userNavigation = [
   { name: 'Sign out', href: '#' },
 ]
 
-const Navigation: React.FC<{ items: NavigationItem[] }> = ({ items: navigation }) => {
+const Navigation: React.FC<{ currentUser: UserSession }> = ({ currentUser }) => {
+  
+  const links = [
+    { name: 'Home', href: '/', current: true },
+    !currentUser && { name: 'Sign In', href: '/signin', current: false },
+    !currentUser && { name: 'Sign Up', href: '/signup', current: false },
+    currentUser && { name: 'Sign Out', href: '/signout', current: false },
+  ]
+  .filter(item => item)
+  .map<React.JSX.Element>((item) => (
+    <Link
+      // @ts-ignore
+      key={item.name}
+      // @ts-ignore
+      href={item.href}
+      className={classNames(
+        // @ts-ignore
+        item.current ? 'text-white' : 'text-indigo-100',
+        'rounded-md bg-white bg-opacity-0 px-3 py-2 text-sm font-medium hover:bg-opacity-10'
+      )}
+      // @ts-ignore
+      aria-current={item.current ? 'page' : undefined}
+    >
+      {/* @ts-ignore */}
+      {item.name}
+    </Link>
+  ))
 
   return (
     <Popover as="header" className="bg-indigo-600 pb-24">
@@ -128,7 +155,7 @@ const Navigation: React.FC<{ items: NavigationItem[] }> = ({ items: navigation }
               <div className="grid grid-cols-3 items-center gap-8">
                 <div className="col-span-2">
                   <nav className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {/* {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -140,7 +167,8 @@ const Navigation: React.FC<{ items: NavigationItem[] }> = ({ items: navigation }
                       >
                         {item.name}
                       </a>
-                    ))}
+                    ))} */}
+                    {links}
                   </nav>
                 </div>
                 <div>
