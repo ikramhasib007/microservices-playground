@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
+import { UnprocessableEntityError } from "@concat7/common";
 import { Password } from "../services/password";
-import { BadReqeustError } from "../errors/bad-request-error";
-import { UnprocessableEntityError } from "../errors/unprocessable-entity-error";
 
 interface UserAttrs {
   email: string;

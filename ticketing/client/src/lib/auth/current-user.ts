@@ -1,4 +1,3 @@
-import "server-only";
 import buildClient from "../build-client";
 
 export async function getCurrentUser(): Promise<UserSession> {
