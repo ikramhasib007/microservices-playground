@@ -28,6 +28,14 @@ build:
         manual:
           - dest: .
             src: "src/**/*.ts|js"
+    - image: ikramhasib007/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.ts|js"
 manifests:
   rawYaml:
     - ./infra/k8s/*.yaml
