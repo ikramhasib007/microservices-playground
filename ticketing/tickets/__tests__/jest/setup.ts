@@ -34,7 +34,7 @@ afterAll(async () => {
 
 global.getCookie = () => {
   const payload = {
-    id: "64b693c1cf390b02fc21b095",
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: "test@test.com",
   };
   const token = jwt.sign(payload, process.env.JWT_KEY!);
