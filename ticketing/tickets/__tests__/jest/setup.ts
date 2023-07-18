@@ -34,7 +34,7 @@ afterAll(async () => {
 
 global.getCookie = () => {
   const payload = {
-    id: "asdfwer89sdfja2w",
+    id: "64b693c1cf390b02fc21b095",
     email: "test@test.com",
   };
   const token = jwt.sign(payload, process.env.JWT_KEY!);
