@@ -8,7 +8,7 @@ const stan = nats.connect("ticketing", randomBytes(4).toString("hex"), {
   url: "http://localhost:4222",
 });
 
-stan.on("connect", () => {
+stan.on("connect", async () => {
   console.log("Publisher connected to NATS");
 
   const data = {
@@ -17,7 +17,7 @@ stan.on("connect", () => {
     price: 20,
   };
 
-  new TicketCreatedPublisher(stan).publish(data);
+  await new TicketCreatedPublisher(stan).publish(data);
 
   // const data = JSON.stringify({
   //   id: "dsfs89sd",
