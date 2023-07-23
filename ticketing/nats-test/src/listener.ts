@@ -1,5 +1,6 @@
-import nats, { Message } from "node-nats-streaming";
+import nats from "node-nats-streaming";
 import { randomBytes } from "crypto";
+import { TicketCreatedListener } from "./events/ticket-created-listener";
 
 console.clear();
 
@@ -15,27 +16,7 @@ stan.on("connect", () => {
     process.exit();
   });
 
-  const options = stan
-    .subscriptionOptions()
-    .setManualAckMode(true)
-    .setDeliverAllAvailable() // Get all events that emitted on past
-    .setDurableName("accounting-service"); // Keep a track of all event that's are proccessed or not with status/note
-
-  const subscription = stan.subscribe(
-    "ticket:created",
-    "accounting-service-queue-group", // Do not accidently dump the durable events when services restarts. And make sure all event should go at a specific group of listener
-    options
-  );
-
-  subscription.on("message", (msg: Message) => {
-    const data = msg.getData();
-
-    if (typeof data === "string") {
-      console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
-    }
-
-    msg.ack();
-  });
+  new TicketCreatedListener(stan).listen();
 });
 
 // Pressing CTRL+C or Close the terminal
