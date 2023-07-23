@@ -15,10 +15,15 @@ stan.on("connect", () => {
     process.exit();
   });
 
-  const options = stan.subscriptionOptions().setManualAckMode(true);
+  const options = stan
+    .subscriptionOptions()
+    .setManualAckMode(true)
+    .setDeliverAllAvailable() // Get all events that emitted on past
+    .setDurableName("accounting-service"); // Keep a track of all event that's are proccessed or not with status/note
+
   const subscription = stan.subscribe(
     "ticket:created",
-    "orders-service-queue-group",
+    "accounting-service-queue-group", // Do not accidently dump the durable events when services restarts. And make sure all event should go at a specific group of listener
     options
   );
 
