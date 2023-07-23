@@ -20,6 +20,16 @@ const start = async () => {
       "sdfjsiuoi987",
       process.env.NATS_URL
     );
+
+    natsWrapper.client.on("close", () => {
+      console.log("NATS connection closed!");
+      process.exit();
+    });
+
+    // Pressing CTRL+C or Close the terminal
+    process.on("SIGINT", () => natsWrapper.client.close());
+    process.on("SIGTERM", () => natsWrapper.client.close());
+
     await mongoose.connect(process.env.MONGO_URI, {});
     console.log("MongoDB connected!");
   } catch (error) {
