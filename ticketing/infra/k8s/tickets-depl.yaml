@@ -23,7 +23,11 @@ spec:
         # - containerPort: 3000
         env:
           - name: NATS_CLUSTERID
-            value: "ticketing"
+            value: ticketing
+          - name: NATS_CLIENTID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
           - name: NATS_URL
             value: "http://nats-srv:4222"
           - name: MONGO_URI
