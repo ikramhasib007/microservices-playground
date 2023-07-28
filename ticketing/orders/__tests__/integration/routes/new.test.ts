@@ -3,6 +3,7 @@ import request from "supertest";
 import { app } from "../../../src/app";
 import { Ticket } from "../../../src/models/ticket";
 import { Order, OrderStatus } from "../../../src/models/order";
+import { natsWrapper } from "../../../src/nats-wrapper";
 
 it("Should returns an error if the ticketId is not valid", async () => {
   const response = await request(app)
@@ -59,4 +60,18 @@ it("Should reserves a ticket", async () => {
   expect(response.body.status).toEqual(OrderStatus.Created);
 });
 
-it.todo("Should emits an order created event");
+it("Should emits an order created event", async () => {
+  const ticket = Ticket.build({
+    title: "concert",
+    price: 20,
+  });
+  await ticket.save();
+
+  const response = await request(app)
+    .post("/api/orders")
+    .set("Cookie", getCookie())
+    .send({ ticketId: ticket.id })
+    .expect(201);
+  expect(response.body.status).toEqual(OrderStatus.Created);
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+});
