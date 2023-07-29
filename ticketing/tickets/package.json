@@ -24,8 +24,8 @@
   "author": "",
   "license": "ISC",
   "volta": {
-    "node": "18.16.0",
-    "pnpm": "8.6.6"
+    "node": "18.17.0",
+    "pnpm": "8.6.10"
   },
   "dependencies": {
     "@concat7/common": "^0.0.13",

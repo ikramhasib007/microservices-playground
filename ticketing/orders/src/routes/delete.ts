@@ -8,7 +8,7 @@ import {
   requireAuth,
 } from "@concat7/common";
 import { Order } from "../models/order";
-import { OrderCancelledPublisher } from "../events/order-cancelled-event";
+import { OrderCancelledPublisher } from "../events/publishers/order-cancelled-publisher";
 import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
