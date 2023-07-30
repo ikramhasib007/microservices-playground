@@ -23,13 +23,7 @@ it("should implements optimistic concurrency control", async () => {
   await firstInstance!.save();
 
   // save the second fetched ticket and expect an error
-  try {
-    await secondInstance!.save();
-  } catch (err) {
-    return;
-  }
-
-  throw new Error("Should not reach this point");
+  await expect(secondInstance!.save()).rejects.toThrow();
 });
 
 it("should increments the version number on multiple saves", async () => {
