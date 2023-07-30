@@ -1,4 +1,5 @@
 import request from "supertest";
+import mongoose from "mongoose";
 import { app } from "../../../src/app";
 import { Ticket } from "../../../src/models/ticket";
 import { Order, OrderStatus } from "../../../src/models/order";
@@ -16,6 +17,7 @@ it("Shouldn't delete an order when provide invalid orderID", async () => {
 it("Should marks an order as cancelled", async () => {
   // create a ticket with Ticket Model
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "concert",
     price: 20,
   });
@@ -45,6 +47,7 @@ it("Should marks an order as cancelled", async () => {
 it("Should emits a order cancelled event", async () => {
   // create a ticket with Ticket Model
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "concert",
     price: 20,
   });

@@ -1,4 +1,5 @@
 import request from "supertest";
+import mongoose from "mongoose";
 import { app } from "../../../src/app";
 import { Ticket } from "../../../src/models/ticket";
 
@@ -14,6 +15,7 @@ it("Shouldn't fetches the order when provide invalid orderID", async () => {
 it("Should fetches the order", async () => {
   // Create a ticket
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "concert",
     price: 20,
   });
@@ -40,6 +42,7 @@ it("Should fetches the order", async () => {
 it("Should returns an error if one user tries to fetch another users order", async () => {
   // Create a ticket
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: "concert",
     price: 20,
   });
