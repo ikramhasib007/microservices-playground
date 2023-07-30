@@ -62,11 +62,9 @@ it("should'not call ack if the event has a skipped version number", async () => 
 
   data.version = 10;
 
-  try {
-    await listener.onMessage(data, msg);
-  } catch (error: any) {
-    expect(error.message).toBe("Ticket not found!");
-  }
+  await expect(listener.onMessage(data, msg)).rejects.toThrow(
+    "Ticket not found!"
+  );
 
   expect(msg.ack).not.toHaveBeenCalled();
 });
