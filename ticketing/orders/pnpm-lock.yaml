@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@concat7/common':
-    specifier: ^0.0.14
-    version: 0.0.14
+    specifier: ^0.0.15
+    version: 0.0.15
   body-parser:
     specifier: ^1.20.2
     version: 1.20.2
@@ -951,8 +951,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@concat7/common@0.0.14:
-    resolution: {integrity: sha512-KJWhKnh48hhHlgx4Zi+hl9AqBCmKKQ+CavbbbEL20jP1ry/24iX3EqOsxZctcgxztWkoXxRrZ7Omu4kGjUc+fA==}
+  /@concat7/common@0.0.15:
+    resolution: {integrity: sha512-n+iECEXOj/fza2DeP1r6czASheemLAj9s9xTtxdaZKFy8MbjajS+IG6L7UapQFnSKJLv8KlSOkVU2Tci+JB4og==}
     dependencies:
       cookie-session: 2.0.0
       express: 4.18.2
@@ -3652,7 +3652,7 @@ packages:
       md5-file: 5.0.0
       mongodb: 4.16.0
       new-find-package-json: 2.0.0
-      semver: 7.5.3
+      semver: 7.5.4
       tar-stream: 2.2.0
       tslib: 2.6.0
       uuid: 9.0.0
