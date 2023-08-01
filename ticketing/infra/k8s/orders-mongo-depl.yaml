@@ -24,12 +24,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  orders-mongo-srv
+  name: orders-mongo-srv
 spec:
   selector:
-    app:  orders-mongo
+    app: orders-mongo
   ports:
-  - name:  orders-mongo
+  - name: mongo-db
     protocol: TCP
     port:  27017
     targetPort:  27017

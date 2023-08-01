@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets-mongo-depl
+  name: expiration-redis-depl
 spec:
   selector:
     matchLabels:
-      app: tickets-mongo
+      app: expiration-redis
   template:
     metadata:
       labels:
-        app: tickets-mongo
+        app: expiration-redis
     spec:
       containers:
-      - name: tickets-mongo
-        image: mongo
+      - name: expiration-redis
+        image: redis
         # resources:
         #   limits:
         #     memory: "128Mi"
@@ -24,12 +24,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: tickets-mongo-srv
+  name: expiration-redis-srv
 spec:
   selector:
-    app: tickets-mongo
+    app: expiration-redis
   ports:
-  - name: mongo-db
+  - name: redis-db
     protocol: TCP
-    port:  27017
-    targetPort:  27017
+    port:  6379
+    targetPort:  6379

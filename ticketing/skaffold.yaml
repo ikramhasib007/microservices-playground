@@ -44,6 +44,14 @@ build:
         manual:
           - src: "src/**/*.ts|js"
             dest: .
+    - image: ikramhasib007/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts|js"
+            dest: .
             
 manifests:
   rawYaml:
