@@ -52,6 +52,14 @@ build:
         manual:
           - src: "src/**/*.ts|js"
             dest: .
+    - image: ikramhasib007/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts|js"
+            dest: .
             
 manifests:
   rawYaml:
