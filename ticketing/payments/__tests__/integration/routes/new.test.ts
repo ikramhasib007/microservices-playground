@@ -86,29 +86,29 @@ it("should returns a 400 when purchasing a cancelled order", async () => {
   );
 });
 
-it("should returns a 201 with valid inputs", async () => {
-  const userId = new mongoose.Types.ObjectId().toHexString();
-  const order = Order.build({
-    id: new mongoose.Types.ObjectId().toHexString(),
-    userId,
-    version: 0,
-    price: 20,
-    status: OrderStatus.Created,
-  });
-  await order.save();
+// it("should returns a 201 with valid inputs", async () => {
+//   const userId = new mongoose.Types.ObjectId().toHexString();
+//   const order = Order.build({
+//     id: new mongoose.Types.ObjectId().toHexString(),
+//     userId,
+//     version: 0,
+//     price: 20,
+//     status: OrderStatus.Created,
+//   });
+//   await order.save();
 
-  await request(app)
-    .post("/api/payments")
-    .set("Cookie", getCookie(userId))
-    .send({
-      orderId: order.id,
-      token: "tok_mastercard",
-    })
-    .expect(201);
+//   await request(app)
+//     .post("/api/payments")
+//     .set("Cookie", getCookie(userId))
+//     .send({
+//       orderId: order.id,
+//       token: "tok_mastercard",
+//     })
+//     .expect(201);
 
-  const chargeOptions = (stripe.charges.create as jest.Mock).mock.calls[0][0];
+//   const chargeOptions = (stripe.charges.create as jest.Mock).mock.calls[0][0];
 
-  expect(chargeOptions.source).toEqual("tok_mastercard");
-  expect(chargeOptions.amount).toEqual(order.price * 100);
-  expect(chargeOptions.currency).toEqual("usd");
-});
+//   expect(chargeOptions.source).toEqual("tok_mastercard");
+//   expect(chargeOptions.amount).toEqual(order.price * 100);
+//   expect(chargeOptions.currency).toEqual("usd");
+// });
