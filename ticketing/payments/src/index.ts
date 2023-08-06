@@ -6,11 +6,12 @@ import { OrderCancelledListener } from "./events/listeners/order-cancelled-liste
 
 const start = async () => {
   /**
-   * kubectl create secret generic jwt-secret --from-literal=JWT_KEY=FA1F4D77A673182FD463323D25DBD
-   * kubectl create secret generic [secret-name] --from-literal=[key]=[value]
+   * kubectl create secret generic jwt-secret --from-literal JWT_KEY=FA1F4D77A673182FD463323D25DBD
+   * kubectl create secret generic [secret-name] --from-literal [key]=[value]
    */
   if (!process.env.JWT_KEY) throw new Error("JWT_KEY must be defined");
   if (!process.env.MONGO_URI) throw new Error("MONGO_URI must be defined");
+  if (!process.env.STRIPE_KEY) throw new Error("STRIPE_KEY must be defined");
 
   if (!process.env.NATS_CLUSTERID)
     throw new Error("NATS_CLUSTERID must be defined");
@@ -51,8 +52,8 @@ const start = async () => {
 start();
 
 /**
- * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_USERNAME=admin
- * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_PASSWORD=1234
+ * kubectl create secret generic db-secret --from-literal MONGO_INITDB_ROOT_USERNAME=admin
+ * kubectl create secret generic db-secret --from-literal MONGO_INITDB_ROOT_PASSWORD=1234
  *
- * kubectl create secret generic db-secret --from-literal=MONGO_INITDB_ROOT_USERNAME=admin --from-literal=MONGO_INITDB_ROOT_PASSWORD=1234
+ * kubectl create secret generic db-secret --from-literal MONGO_INITDB_ROOT_USERNAME=admin --from-literal=MONGO_INITDB_ROOT_PASSWORD=1234
  */
