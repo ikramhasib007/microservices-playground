@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@concat7/common':
-    specifier: ^0.0.17
-    version: 0.0.17
+    specifier: ^0.0.18
+    version: 0.0.18
   body-parser:
     specifier: ^1.20.2
     version: 1.20.2
@@ -899,8 +899,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@concat7/common@0.0.17:
-    resolution: {integrity: sha512-yAoL5XcNsSYXfH8zBfalg9XGdm78ORd/0r5FrFwRO1LNLlkGsmt1BmaYYe9p2C0Dq4kx6hWMMHHrjQ7L1fH5wQ==}
+  /@concat7/common@0.0.18:
+    resolution: {integrity: sha512-w6mwI6E4UQkR6RDxsmWVupDjI1c2YhDMv4srASnHq1VlnrVUM0WrSBeIvNyY4jCrEhNDKYdz07CNubi5BBcpDg==}
     dependencies:
       cookie-session: 2.0.0
       express: 4.18.2
