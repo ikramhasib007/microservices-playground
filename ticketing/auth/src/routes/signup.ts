@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
-import { validateRequest, BadReqeustError } from "@concat7/common";
+import { validateRequest, BadRequestError } from "@concat7/common";
 import { User } from "../models/user";
 
 const router = express.Router();
@@ -21,7 +21,7 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new BadReqeustError("Email in use");
+      throw new BadRequestError("Email in use");
     }
 
     const user = User.build({ email, password });

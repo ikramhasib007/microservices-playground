@@ -28,7 +28,7 @@
     "pnpm": "8.6.10"
   },
   "dependencies": {
-    "@concat7/common": "^0.0.16",
+    "@concat7/common": "^0.0.17",
     "bull": "^4.10.4",
     "node-nats-streaming": "^0.3.2"
   },

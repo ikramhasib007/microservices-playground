@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
-import { validateRequest, BadReqeustError } from "@concat7/common";
+import { validateRequest, BadRequestError } from "@concat7/common";
 import { User } from "../models/user";
 import { Password } from "../services/password";
 
@@ -19,7 +19,7 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
-      throw new BadReqeustError("Unable to signin");
+      throw new BadRequestError("Unable to signin");
     }
 
     const passwordsMatch = await Password.compare(
@@ -27,7 +27,7 @@ router.post(
       password
     );
 
-    if (!passwordsMatch) throw new BadReqeustError("Unable to signin");
+    if (!passwordsMatch) throw new BadRequestError("Unable to signin");
 
     // Generating JWT
     const userJWT = jwt.sign(

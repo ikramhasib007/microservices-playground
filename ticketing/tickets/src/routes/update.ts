@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import {
-  BadReqeustError,
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   requireAuth,
@@ -30,7 +30,7 @@ router.put(
     }
 
     if (ticket.orderId)
-      throw new BadReqeustError("Cannot edit a reserved ticket");
+      throw new BadRequestError("Cannot edit a reserved ticket");
 
     if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();

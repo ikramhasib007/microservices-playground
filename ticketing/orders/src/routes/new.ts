@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import {
-  BadReqeustError,
+  BadRequestError,
   NotFoundError,
   OrderStatus,
   requireAuth,
@@ -39,7 +39,7 @@ router.post(
     // Make sure that this ticket is not already reserved
     const isReserved = await ticket.isReserved();
     if (isReserved) {
-      throw new BadReqeustError("Ticket is already reserved");
+      throw new BadRequestError("Ticket is already reserved");
     }
 
     // Calculate an expiration date for this order
