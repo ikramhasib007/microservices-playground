@@ -25,21 +25,29 @@ export default function useRequest() {
       return response.data;
     } catch (error: any) {
       setErrors(
-        <div className='rounded-md bg-red-50 p-4'>
-          <div className='flex'>
-            <div className='flex-shrink-0'>
+        // @ts-ignore
+        <div class='rounded-md bg-red-50 p-4'>
+          {/* @ts-ignore */}
+          <div class='flex'>
+            {/* @ts-ignore */}
+            <div class='flex-shrink-0'>
               <XCircleIcon
-                className='h-5 w-5 text-red-400'
+                // @ts-ignore
+                class='h-5 w-5 text-red-400'
                 aria-hidden='true'
               />
             </div>
-            <div className='ml-3'>
-              <h3 className='text-sm font-medium text-red-800'>
+            {/* @ts-ignore */}
+            <div class='ml-3'>
+              {/* @ts-ignore */}
+              <h3 class='text-sm font-medium text-red-800'>
                 There were {error.response.data.errors?.length || null} errors
                 with your submission
               </h3>
-              <div className='mt-2 text-sm text-red-700'>
-                <ul role='list' className='list-disc space-y-1 pl-5'>
+              {/* @ts-ignore */}
+              <div class='mt-2 text-sm text-red-700'>
+                {/* @ts-ignore */}
+                <ul role='list' class='list-disc space-y-1 pl-5'>
                   {error.response.data.errors?.map((err: ErrorItem) => (
                     <li key={err.message}>{err.message}</li>
                   ))}

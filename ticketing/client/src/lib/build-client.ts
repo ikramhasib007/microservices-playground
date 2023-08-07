@@ -9,23 +9,23 @@ export default function buildClient() {
     transformHeaders[key] = value;
   });
 
-  // return axios.create({
-  //   baseURL: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
-  //   headers: transformHeaders,
-  // });
+  return axios.create({
+    baseURL: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+    headers: transformHeaders,
+  });
 
-  if (typeof window === "undefined") {
-    // We are on the server
+  // if (typeof window === "undefined") {
+  //   // We are on the server
 
-    return axios.create({
-      baseURL:
-        "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
-      headers: transformHeaders,
-    });
-  } else {
-    // We must be on the browser
-    return axios.create({
-      baseURL: "/",
-    });
-  }
+  //   return axios.create({
+  //     baseURL:
+  //       "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+  //     headers: transformHeaders,
+  //   });
+  // } else {
+  //   // We must be on the browser
+  //   return axios.create({
+  //     baseURL: "/",
+  //   });
+  // }
 }
