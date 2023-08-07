@@ -13,7 +13,7 @@ type DoRequestParams = {
   onSuccess?: Function;
 };
 
-type DoRequestFunc = (args: DoRequestParams) => Promise<ReactNode | UserSession>
+type DoRequestFunc = (args: DoRequestParams) => Promise<ReactNode | SessionUser>
 
 export default function useRequest() {
   const [errors, setErrors] = useState<ReactNode>(null);

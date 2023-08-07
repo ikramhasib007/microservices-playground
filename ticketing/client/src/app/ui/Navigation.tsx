@@ -26,7 +26,7 @@ const userNavigation = [
   { name: 'Sign out', href: '#' },
 ]
 
-const Navigation: React.FC<{ currentUser: UserSession }> = ({ currentUser }) => {
+const Navigation: React.FC<{ currentUser: SessionUser }> = ({ currentUser }) => {
   
   const links = [
     { name: 'Home', href: '/', current: true },

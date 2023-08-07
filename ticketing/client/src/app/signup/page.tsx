@@ -1,6 +1,11 @@
+import { redirect } from "next/navigation"
+import { getCurrentUser } from "@/lib/auth/current-user"
 import SignupForm from "../components/SignupForm"
 
-export default function SignupPage() {
+export default async function SignupPage() {
+  const currentUser = await getCurrentUser()
+
+  if(currentUser) redirect("/")
   
   return (
     <>

@@ -3,6 +3,6 @@ type UserPayload = {
   email: string;
 };
 
-type UserSession = UserPayload & {
+type SessionUser = UserPayload & {
   iat: number;
 };

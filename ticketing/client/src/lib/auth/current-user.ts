@@ -1,6 +1,6 @@
 import buildClient from "../build-client";
 
-export async function getCurrentUser(): Promise<UserSession> {
+export async function getCurrentUser(): Promise<SessionUser> {
   const client = buildClient();
   let currentUser = null;
   try {

@@ -1,5 +1,10 @@
+import { redirect } from "next/navigation"
+import { getCurrentUser } from "@/lib/auth/current-user"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const currentUser = await getCurrentUser()
+  if(!currentUser) redirect("/signin")
+
   return (
     <>
       <main className="-mt-24 pb-8">
