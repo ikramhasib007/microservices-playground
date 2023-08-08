@@ -1,8 +1,21 @@
 import { getCurrentUser } from "@/lib/auth/current-user";
 import Navigation from "./ui/Navigation";
+import TicketList from "./components/TicketList";
+import buildClient from "@/lib/build-client";
+
+async function getTickets() {
+  try {
+    const client = buildClient();
+    const { data } = await client.get("/api/tickets")
+    return data;
+  } catch (error) {
+    return [];
+  }
+}
 
 export default async function Home() {
   const currentUser = await getCurrentUser()
+  const tickets = await getTickets()
 
   return (
     <>
@@ -23,12 +36,7 @@ export default async function Home() {
                   <div className="p-6">
                     {/* Your content */}
                     {currentUser ?
-                      <>
-                        <span>Welcome! You are signed in...!</span>
-                        <code className="text-sm">
-                          {JSON.stringify(currentUser)}
-                        </code>
-                      </>
+                      <TicketList tickets={tickets} />
                       :
                       <span>Please login first...!</span>
                     }
