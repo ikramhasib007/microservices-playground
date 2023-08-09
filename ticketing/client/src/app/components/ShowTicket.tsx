@@ -4,7 +4,7 @@ import useRequest from '@/hooks/use-request'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
-const ShowTicket: React.FC<{ ticket: any }> = ({ ticket }) => {
+const ShowTicket: React.FC<{ ticket: Ticket }> = ({ ticket }) => {
   const router = useRouter()
   const { doRequest, errors } = useRequest()
 
@@ -15,7 +15,7 @@ const ShowTicket: React.FC<{ ticket: any }> = ({ ticket }) => {
       body: {
         ticketId: ticket.id
       },
-      onSuccess: (order: any) => router.push(`/orders/${order.id}`)
+      onSuccess: (order: Order) => router.push(`/orders/${order.id}`)
     })
   }
 

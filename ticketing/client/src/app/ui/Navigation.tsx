@@ -41,6 +41,8 @@ const Navigation: React.FC<{ currentUser: SessionUser }> = ({ currentUser }) => 
       key={item.name}
       // @ts-ignore
       href={item.href}
+      // @ts-ignore
+      as={item.href}
       className={classNames(
         // @ts-ignore
         item.current ? 'text-white' : 'text-indigo-100',

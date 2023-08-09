@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 
 type TicketListProps = {
-  tickets: any
+  tickets: Ticket[]
 }
 
 const TicketList: React.FC<TicketListProps> = ({ tickets }) => {
@@ -17,7 +17,7 @@ const TicketList: React.FC<TicketListProps> = ({ tickets }) => {
           </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <Link href="/tickets/new">
+          <Link href="/tickets/new" as="/tickets/new">
             <button
               type="button"
               className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -45,7 +45,7 @@ const TicketList: React.FC<TicketListProps> = ({ tickets }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {tickets.map((ticket: any) => (
+                {tickets.map((ticket) => (
                   <tr key={ticket.id}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                       {ticket.title}
