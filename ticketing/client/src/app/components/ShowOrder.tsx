@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import useRequest from '@/hooks/use-request'
 import StripeCheckout from 'react-stripe-checkout'
+import { useRouter } from 'next/navigation';
 
 type ShowOrderProps = {
   currentUser: SessionUser;
@@ -10,6 +11,7 @@ type ShowOrderProps = {
 }
 
 const ShowOrder: React.FC<ShowOrderProps> = ({ order, currentUser }) => {
+  const router = useRouter()
   const [timeLeft, setTimeLeft] = useState<number|string>('')
   const { doRequest, errors } = useRequest()
 
@@ -21,7 +23,7 @@ const ShowOrder: React.FC<ShowOrderProps> = ({ order, currentUser }) => {
         token,
         orderId: order.id
       },
-      onSuccess: (payment: any) => console.log(payment)
+      onSuccess: () => router.push("/orders")
     })
   }
 

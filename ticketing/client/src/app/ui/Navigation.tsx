@@ -32,6 +32,7 @@ const Navigation: React.FC<{ currentUser: SessionUser }> = ({ currentUser }) => 
     { name: 'Home', href: '/', current: true },
     !currentUser && { name: 'Sign In', href: '/signin', current: false },
     !currentUser && { name: 'Sign Up', href: '/signup', current: false },
+    currentUser && { name: 'My Orders', href: '/orders', current: false },
     currentUser && { name: 'Sign Out', href: '/signout', current: false },
   ]
   .filter(item => item)

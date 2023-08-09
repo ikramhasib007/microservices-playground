@@ -1,7 +1,7 @@
 type Order = {
   id: string;
   userId: string;
-  status: string;
+  status: OrderStatus;
   expiresAt: string;
   version: number;
   ticket: Ticket;
