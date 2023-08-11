@@ -23,7 +23,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - run: cd ticketing/auth
-    - name: Install dependencies
-      run: pnpm install
-    - run: npm run test:ci
+    - name: Install dependencies & Run tests
+      run: cd ticketing/auth && pnpm install && pnpm test:ci
