@@ -27,5 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: ./ticketing/auth/pnpm-lock.yaml
-    - name: Install dependencies & Run tests
-      run: cd auth && pnpm install && pnpm test:ci
+    - name: Install dependencies
+      run: cd auth && pnpm install
+    - name: Run tests
+      run: pnpm test:ci

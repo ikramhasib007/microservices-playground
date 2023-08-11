@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
     "test": "jest --watchAll --no-cache --detectOpenHandles --runInBand --testTimeout=12000",
-    "test:ci": "jest --testTimeout=12000"
+    "test:ci": "jest --runInBand --testTimeout=12000"
   },
   "jest": {
     "preset": "ts-jest",
