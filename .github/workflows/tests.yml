@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ticketing
     strategy:
       matrix:
         node-version: [18]
@@ -23,5 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
+        cache-dependency-path: ./ticketing/auth/pnpm-lock.yaml
     - name: Install dependencies & Run tests
       run: cd ticketing/auth && pnpm install && pnpm test:ci
