@@ -30,4 +30,4 @@ jobs:
     - name: Install dependencies
       run: cd auth && pnpm install
     - name: Run tests
-      run: pnpm test:ci
+      run: cd auth && pnpm test:ci
