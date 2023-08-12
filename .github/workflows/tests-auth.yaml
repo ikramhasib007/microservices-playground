@@ -5,6 +5,8 @@ name: tests-auth
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'ticketing/auth/**'
   pull_request:
     branches: [ "main" ]
     paths:
