@@ -15,7 +15,7 @@ jobs:
         working-directory: ./ticketing
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [18.x]
     steps:
     - uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
