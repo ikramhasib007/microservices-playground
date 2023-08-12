@@ -3,8 +3,9 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
     paths:
-      - "tickets/**"
+      - 'tickets/**'
 jobs:
   build:
     runs-on: ubuntu-latest
