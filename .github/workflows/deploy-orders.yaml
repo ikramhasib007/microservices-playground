@@ -21,3 +21,11 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     - name: Docker push
       run: docker push ikramhasib007/orders
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save k8s-1-27-4-do-0-sfo3-1691873404867
+    - name: Restarting the Deployment
+      run: kubectl rollout restart deployment orders-depl
