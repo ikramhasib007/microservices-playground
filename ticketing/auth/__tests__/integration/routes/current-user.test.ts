@@ -18,7 +18,7 @@ describe("Current user", () => {
     const response = await request(app)
       .get("/api/users/current-user")
       .send()
-      .expect(400);
+      .expect(200);
     expect(response.body.currentUser).toBeNull();
   });
 });
