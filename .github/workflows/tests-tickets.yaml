@@ -4,6 +4,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    paths: # selective test execution
+      - "tickets/**"
 jobs:
   build:
     runs-on: ubuntu-latest
