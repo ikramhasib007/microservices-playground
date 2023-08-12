@@ -8,7 +8,6 @@ on:
   pull_request:
     paths:
       - "auth/**"
-    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
