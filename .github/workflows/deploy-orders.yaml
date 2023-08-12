@@ -1,0 +1,23 @@
+name: deploy-orders
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'ticketing/orders/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ticketing
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker build
+      run: cd orders && docker build -t ikramhasib007/orders .
+    - name: Docker login
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker push
+      run: docker push ikramhasib007/orders
