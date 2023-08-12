@@ -1,7 +1,4 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: tests CI
+name: tests-tickets
 on:
   push:
     branches: [ "main" ]
@@ -26,8 +23,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-        cache-dependency-path: ./ticketing/auth/pnpm-lock.yaml
+        cache-dependency-path: ./ticketing/tickets/pnpm-lock.yaml
     - name: Install dependencies
-      run: cd auth && pnpm install
+      run: cd tickets && pnpm install
     - name: Run tests
-      run: cd auth && pnpm test:ci
+      run: cd tickets && pnpm test:ci
