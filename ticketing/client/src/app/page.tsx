@@ -38,7 +38,7 @@ export default async function Home() {
                     {currentUser ?
                       <TicketList tickets={tickets} />
                       :
-                      <span>Please login first...!</span>
+                      <span>Please login first...</span>
                     }
                   </div>
                 </div>
