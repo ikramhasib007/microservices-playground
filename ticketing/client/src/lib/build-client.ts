@@ -10,7 +10,7 @@ export default function buildClient() {
   });
 
   return axios.create({
-    baseURL: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
+    baseURL: "http://employeebus.com",
     headers: transformHeaders,
   });
 
