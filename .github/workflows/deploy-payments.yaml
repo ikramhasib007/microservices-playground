@@ -1,0 +1,31 @@
+name: deploy-payments
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'ticketing/payments/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ticketing
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker build
+      run: cd payments && docker build -t ikramhasib007/payments .
+    - name: Docker login
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker push
+      run: docker push ikramhasib007/payments
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save k8s-ergool-testing
+    - name: Restarting the Deployment
+      run: kubectl rollout restart deployment payments-depl
