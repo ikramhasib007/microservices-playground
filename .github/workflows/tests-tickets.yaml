@@ -2,6 +2,8 @@ name: tests-tickets
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'ticketing/tickets/**'
   pull_request:
     branches: [ "main" ]
     paths:

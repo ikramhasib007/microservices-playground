@@ -1,0 +1,23 @@
+name: deploy-auth
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'ticketing/auth/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ticketing
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker build
+      run: cd auth && docker build -t ikramhasib007/auth .
+    - name: Docker login
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker push
+      run: docker push ikramhasib007/auth
