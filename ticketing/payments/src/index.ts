@@ -5,6 +5,7 @@ import { OrderCreatedListener } from "./events/listeners/order-created-listener"
 import { OrderCancelledListener } from "./events/listeners/order-cancelled-listener";
 
 const start = async () => {
+  console.log("Starting up...");
   /**
    * kubectl create secret generic jwt-secret --from-literal JWT_KEY=FA1F4D77A673182FD463323D25DBD
    * kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=sk_test_51NcC0bIdJ5aXWqjlZI7wFEgZ9aiI0b1EuPpJSHev8NGEdGrTSFM3eUrrLZoulmvmLkhnp1LD79TcDbXTS0IafBJn00yh4RE4Yx
